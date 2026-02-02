@@ -29,17 +29,29 @@ export interface ServicePackage {
 }
 
 // LMS Types
+export type ModuleType = 'video' | 'quiz' | 'resource';
+
+export interface QuizQuestion {
+  id: number;
+  question: string;
+  options: string[];
+  correctAnswer: number; // Index of the correct option
+}
+
 export interface CourseModule {
   id: number;
   title: string;
+  type: ModuleType;
   duration: string;
-  isLocked: boolean;
-  videoUrl?: string; // Mock video URL
+  description?: string;
+  videoUrl?: string; 
   content?: string;
+  questions?: QuizQuestion[]; // For quiz type
+  resources?: { name: string; url: string; size: string }[]; // For resource type
 }
 
 export interface User {
   name: string;
   email: string;
-  progress: number;
+  completedModules: number[];
 }
