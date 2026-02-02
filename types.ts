@@ -30,6 +30,7 @@ export interface ServicePackage {
 
 // LMS Types
 export type ModuleType = 'video' | 'quiz' | 'resource';
+export type LMSView = 'dashboard' | 'leaderboard' | 'profile';
 
 export interface QuizQuestion {
   id: number;
@@ -48,10 +49,20 @@ export interface CourseModule {
   content?: string;
   questions?: QuizQuestion[]; // For quiz type
   resources?: { name: string; url: string; size: string }[]; // For resource type
+  xp: number; // Experience points for completing
 }
 
 export interface User {
   name: string;
   email: string;
   completedModules: number[];
+  totalXp: number;
+}
+
+export interface StudentRank {
+  id: number;
+  name: string;
+  school: string;
+  xp: number;
+  avatar: string;
 }
